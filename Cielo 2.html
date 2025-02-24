@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cupones para Mi Amor</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            background: url('https://www.dzoom.org.es/wp-content/uploads/2013/08/atardecer-inspiracion-6.jpg') repeat center center fixed; 
+            background-size: cover;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 20px;
+        }
+        .titulo {
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .cupon-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 90%;
+        }
+        .cupon {
+            width: 300px;
+            height: 150px;
+            position: relative;
+            perspective: 1000px;
+        }
+        .cupon-inner {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+        .cupon.flipped .cupon-inner {
+            transform: rotateY(180deg);
+        }
+        .cupon-front, .cupon-back {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            border-radius: 15px; 
+            background-color: black; 
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .cupon-back {
+            transform: rotateY(180deg);
+            background-color: #444;
+            padding: 10px;
+            font-size: 14px;
+        }
+        .boton {
+            background-color: #e74c3c; 
+            color: white; 
+            border: none; 
+            padding: 10px; 
+            cursor: pointer; 
+            margin-top: 15px;
+            border-radius: 5px;
+        }
+        .boton:hover { background-color: #c0392b; }
+        .icono {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="titulo">Mis Cupones para Ti</div>
+    <div id="cupones" class="cupon-container">
+        <div class="cupon" data-id="1" onclick="girarCupon(this)">
+            <div class="cupon-inner">
+                <div class="cupon-front">
+                    <img class="icono" src="https://cdn-icons-png.flaticon.com/512/744/744922.png" alt="Cine">
+                    Te amo ❤️<br>IR AL CINE <button class="boton" onclick="event.stopPropagation(); redimir(1)">Redimir</button>
+                </div>
+                <div class="cupon-back">Términos y condiciones: Válido una sola vez. No acumulable con otros cupones.</div>
+            </div>
+        </div>
+        <div class="cupon" data-id="2" onclick="girarCupon(this)">
+            <div class="cupon-inner">
+                <div class="cupon-front">Te amo ❤️<br>CONOCER UN PUEBLITO NUEVO <button class="boton" onclick="event.stopPropagation(); redimir(2)">Redimir</button></div>
+                <div class="cupon-back">Términos y condiciones: Solo válido en fines de semana.</div>
+            </div>
+        </div>
+        <div class="cupon" data-id="3" onclick="girarCupon(this)">
+            <div class="cupon-inner">
+                <div class="cupon-front">Te amo ❤️<br>IR A TEATRO <button class="boton" onclick="event.stopPropagation(); redimir(3)">Redimir</button></div>
+                <div class="cupon-back">Términos y condiciones: Cupón válido solo una vez.</div>
+            </div>
+        </div>
+        <div class="cupon" data-id="4" onclick="girarCupon(this)">
+            <div class="cupon-inner">
+                <div class="cupon-front">Te amo ❤️<br>PINTAR JUNTOS <button class="boton" onclick="event.stopPropagation(); redimir(4)">Redimir</button></div>
+                <div class="cupon-back">Términos y condiciones: No acumulable con otros cupones.</div>
+            </div>
+        </div>
+        <div class="cupon" data-id="5" onclick="girarCupon(this)">
+            <div class="cupon-inner">
+                <div class="cupon-front">Te amo ❤️<br>UN POSTRE <button class="boton" onclick="event.stopPropagation(); redimir(5)">Redimir</button></div>
+                <div class="cupon-back">Términos y condiciones: Válido una sola vez. No acumulable con otros cupones.</div>
+            </div>
+        </div>
+        <div class="cupon" data-id="6" onclick="girarCupon(this)">
+            <div class="cupon-inner">
+                <div class="cupon-front">Te amo ❤️<br>UN DESAYUNO JUNTOS <button class="boton" onclick="event.stopPropagation(); redimir(6)">Redimir</button></div>
+                <div class="cupon-back">Términos y condiciones: Solo válido en fines de semana.</div>
+            </div>
+        </div>
+        <div class="cupon" data-id="7" onclick="girarCupon(this)">
+            <div class="cupon-inner">
+                <div class="cupon-front">Te amo ❤️<br>UNA COMIDA JUNTOS <button class="boton" onclick="event.stopPropagation(); redimir(7)">Redimir</button></div>
+                <div class="cupon-back">Términos y condiciones: Cupón válido solo una vez.</div>
+            </div>
+        </div>
+        <div class="cupon" data-id="8" onclick="girarCupon(this)">
+            <div class="cupon-inner">
+                <div class="cupon-front">Te amo ❤️<br>UN ALMUERZO JUNTOS <button class="boton" onclick="event.stopPropagation(); redimir(8)">Redimir</button></div>
+                <div class="cupon-back">Términos y condiciones: No acumulable con otros cupones.</div>
+            </div>
+        </div>
+        <div class="cupon" data-id="9" onclick="girarCupon(this)">
+            <div class="cupon-inner">
+                <div class="cupon-front">Te amo ❤️<br>DORMIR JUNTOS <button class="boton" onclick="event.stopPropagation(); redimir(9)">Redimir</button></div>
+                <div class="cupon-back">Términos y condiciones: Válido una sola vez. No acumulable con otros cupones.</div>
+            </div>
+        </div>
+        <div class="cupon" data-id="10" onclick="girarCupon(this)">
+            <div class="cupon-inner">
+                <div class="cupon-front">Te amo ❤️<br>TE ACOMPAÑE A MONTAR PATINES <button class="boton" onclick="event.stopPropagation(); redimir(10)">Redimir</button></div>
+                <div class="cupon-back">Términos y condiciones: Solo válido en fines de semana.</div>
+            </div>
+        </div>
+        <div class="cupon" data-id="11" onclick="girarCupon(this)">
+            <div class="cupon-inner">
+                <div class="cupon-front">Te amo ❤️<br>UNAS GOMITAS  <button class="boton" onclick="event.stopPropagation(); redimir(11)">Redimir</button></div>
+                <div class="cupon-back">Términos y condiciones: Cupón válido solo una vez.</div>
+            </div>
+        </div>
+        <div class="cupon" data-id="12" onclick="girarCupon(this)">
+            <div class="cupon-inner">
+                <div class="cupon-front">Te amo ❤️<br>COCINAR JUNTOS <button class="boton" onclick="event.stopPropagation(); redimir(12)">Redimir</button></div>
+                <div class="cupon-back">Términos y condiciones: No acumulable con otros cupones.</div>
+            </div>
+        </div>
+        <div class="cupon" data-id="13" onclick="girarCupon(this)">
+            <div class="cupon-inner">
+                <div class="cupon-front">Te amo ❤️<br>ENTRENAR JUNTOS <button class="boton" onclick="event.stopPropagation(); redimir(13)">Redimir</button></div>
+                <div class="cupon-back">Términos y condiciones: Válido una sola vez. No acumulable con otros cupones.</div>
+            </div>
+        </div>
+        <div class="cupon" data-id="14" onclick="girarCupon(this)">
+            <div class="cupon-inner">
+                <div class="cupon-front">Te amo ❤️<br>MATERIAL PARA PINTAR <button class="boton" onclick="event.stopPropagation(); redimir(14)">Redimir</button></div>
+                <div class="cupon-back">Términos y condiciones: Solo válido en fines de semana.</div>
+            </div>
+        </div>
+        <div class="cupon" data-id="15" onclick="girarCupon(this)">
+            <div class="cupon-inner">
+                <div class="cupon-front">Te amo ❤️<br>UNA VIDEOLLAMADA <button class="boton" onclick="event.stopPropagation(); redimir(15)">Redimir</button></div>
+                <div class="cupon-back">Términos y condiciones: Cupón válido solo una vez.</div>
+            </div>
+        </div>
+        <div class="cupon" data-id="16" onclick="girarCupon(this)">
+            <div class="cupon-inner">
+                <div class="cupon-front">Te amo ❤️<br>QUE VEA UNA SERIE QUE TU QUIERAS <button class="boton" onclick="event.stopPropagation(); redimir(16)">Redimir</button></div>
+                <div class="cupon-back">Términos y condiciones: No acumulable con otros cupones.</div>
+            </div>
+        </div>
+        <div class="cupon" data-id="17" onclick="girarCupon(this)">
+            <div class="cupon-inner">
+                <div class="cupon-front">Te amo ❤️<br>HACER LA ACTIVIDAD QUE TU QUIERAS <button class="boton" onclick="event.stopPropagation(); redimir(17)">Redimir</button></div>
+                <div class="cupon-back">Términos y condiciones: Válido una sola vez. No acumulable con otros cupones.</div>
+            </div>
+        </div>
+        <div class="cupon" data-id="18" onclick="girarCupon(this)">
+            <div class="cupon-inner">
+                <div class="cupon-front">Te amo ❤️<br>ME VISTA COMO TU QUIERAS <button class="boton" onclick="event.stopPropagation(); redimir(18)">Redimir</button></div>
+                <div class="cupon-back">Términos y condiciones: Solo válido en fines de semana.</div>
+            </div>
+        </div>
+        <div class="cupon" data-id="19" onclick="girarCupon(this)">
+            <div class="cupon-inner">
+                <div class="cupon-front">Te amo ❤️<br>UN PICNIC  <button class="boton" onclick="event.stopPropagation(); redimir(19)">Redimir</button></div>
+                <div class="cupon-back">Términos y condiciones: Cupón válido solo una vez.</div>
+            </div>
+        </div>
+        <div class="cupon" data-id="20" onclick="girarCupon(this)">
+            <div class="cupon-inner">
+                <div class="cupon-front">Te amo ❤️<br>UN CAFE JUNTOS <button class="boton" onclick="event.stopPropagation(); redimir(20)">Redimir</button></div>
+                <div class="cupon-back">Términos y condiciones: No acumulable con otros cupones.</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function redimir(id) {
+            let cupon = document.querySelector(`.cupon[data-id='${id}']`);
+            if (cupon) {
+                cupon.remove();
+            }
+        }
+        
+        function girarCupon(element) {
+            element.classList.toggle('flipped');
+        }
+    </script>
+</body>
+</html>
